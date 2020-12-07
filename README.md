@@ -1,52 +1,33 @@
 # Neural_Network_Charity_Analysis
+
 ## Overview of the Analysis
 
 The purpose of this assignment/exercise was to use the features in the provided dataset to create a binary classifier that is capable of predicting whether applicants will be successful if funded by Alphabet Soup.  The purpose of this assignment/exercise was accomplished utilizing our knowledge of machine learning and neural networks.
 
 ## Results
 
-Listed below are the precision and the recall/sensitivity scores of all 6 machine learning models:
+Data Preprocessing:
 
-Native Random Oversampling: Precision Average = 0.99, Recall/Sensitivity Average = 0.57
-[GitHub Pictures](https://github.com/aparihar1984/Credit_Risk_Analysis/blob/main/Pictures/Naive_Random_Oversampling.png)
+The APPLICATION_TYPE and CLASSIFICATION columns/variables were the target variables for the model.  The SPECIAL_CONSIDERATIONS_Y and SPECIAL_CONSIDERATIONS_N were the features for the model.  The "EIN" and "NAME" columns/variables are neither targets nor features, and thus were removed from the input data.
 
-SMOTE Oversampling: Precision Average = 0.99, Recall/Sensitivity Average = 0.68
-[GitHub Pictures](https://github.com/aparihar1984/Credit_Risk_Analysis/blob/main/Pictures/SMOTE_Oversampling.png)
+[GitHub Site](https://github.com/aparihar1984/Neural_Network_Charity_Analysis/blob/main/AlphabetSoupCharity.ipynb)
 
-ClusterCentroids Undersampling: Precision Average = 0.99, Recall/Sensitivity Average = 0.41
-[GitHub Pictures](https://github.com/aparihar1984/Credit_Risk_Analysis/blob/main/Pictures/ClusterCentroids_Undersampling.png)
+Compiling, Training, and Evaluating the Model:
 
-SMOTEENN Combination: Precision Average = 0.99, Recall/Sensitivity Average = 0.58
-[GitHub Pictures](https://github.com/aparihar1984/Credit_Risk_Analysis/blob/main/Pictures/SMOTEENN_Combination.png)
+There were 111 neurons (hidden_nodes_layer1 = 80, hidden_nodes_layer2 = 30, units = 1), 3 layers (First Hidden Layer, Second Hidden Layer, and Output Layer), and  2 activation functions (relu, and sigmoid) in our model.
 
-BalancedRandomForestClassifier: Precision Average = 0.99, Recall/Sensitivity Average = 0.87
-[GitHub Pictures](https://github.com/aparihar1984/Credit_Risk_Analysis/blob/main/Pictures/BalancedRandomForestClassifier_Algorithm.png)
+Were you able to achieve the target model performance? Yes, we did reach 75% accuracy.
 
-EasyEnsembleClassifier: Precision Average = 0.99, Recall/Sensitivity Average = 0.94
-[GitHub Pictures](https://github.com/aparihar1984/Credit_Risk_Analysis/blob/main/Pictures/EasyEnsembleClassifier_Algorithm.png)
+What steps did you take to try and increase model performance?  We decreased the number of counts for both the replace_application (< 200) and the replace_class       (< 1500) functions. We also created a callback that saves the model's weights every 5 epochs.
 
-Listed below are the balanced accuracy scores of all 6 machine learning models:
+[GitHub Site](https://github.com/aparihar1984/Neural_Network_Charity_Analysis/blob/main/AlphabetSoupCharity_Optimzation.ipynb)
 
-Native Random Oversampling: Balanced Accuracy Score = 0.649
-[GitHub Pictures](https://github.com/aparihar1984/Credit_Risk_Analysis/blob/main/Pictures/Naive_Random_Oversampling_Balanced.png)
+[GitHub Site](https://github.com/aparihar1984/Neural_Network_Charity_Analysis/blob/main/AlphabetSoupCharity_Optimzation_Trial_2.ipynb)
 
-SMOTE Oversampling: Balanced Accuracy Score = 0.658
-[GitHub Pictures](https://github.com/aparihar1984/Credit_Risk_Analysis/blob/main/Pictures/SMOTE_Oversampling_Balanced.png)
-
-ClusterCentroids Undersampling: Balanced Accuracy Score = 0.548
-[GitHub Pictures](https://github.com/aparihar1984/Credit_Risk_Analysis/blob/main/Pictures/ClusterCentroids_Undersampling_Balanced.png)
-
-SMOTEENN Combination: Balanced Accuracy Score = 0.648
-[GitHub Pictures](https://github.com/aparihar1984/Credit_Risk_Analysis/blob/main/Pictures/SMOTEENN_Combination_Balanced.png)
-
-BalancedRandomForestClassifier: Balanced Accuracy Score = 0.789
-[GitHub Pictures](https://github.com/aparihar1984/Credit_Risk_Analysis/blob/main/Pictures/BalancedRandomForestClassifier_Algorithm_Balanced.png)
-
-EasyEnsembleClassifier: Balanced Accuracy Score = 0.932
-[GitHub Pictures](https://github.com/aparihar1984/Credit_Risk_Analysis/blob/main/Pictures/EasyEnsembleClassifier_Algorithm_Balanced.png)
 
 ## Summary
 
-To summarize, oversampling, undersampling and combination algorithms are used to address class imbalance scenarios.  Class imbalance refers to when one class is much larger than another class in a set of data.  In our credit risk exercise, class imbalances generally refer to non-fraudulent transactions and fraudulent transactions.  Typically credit card companies deal with a far greater number of non-fraudulent tranactions over fraudulent ones.  The non-fraudulent class is far greater than the fraudulent class.
+To summarize, in our initial test run prior to optimzation (AlphabetSoupCharity) we obtained an accuracy of 0.2620.  After our first optimzation 
+(AlphabetSoupCharity_Optimzation), we obtained an accuracy of 0.9114.  After our second optimzation (AlphabetSoupCharity_Optimzation_Trial_2), we obtained an accuracy of 0.9992.
 
-Based on the high Precision and Recall/Sensitivity Averages (0.99 and 0.94) as well as the high Balanced Accuracy Score (0.932), I would recommend the EasyEnsembleClassifier algorithm to use for predicting credit risk.
+During the first optimzation, we only decreased the number of counts.  During the second optimzation, we created the callback that saves the model's weights every 5 epochs.  This resulted in an accuracy increase from 0.9114 to 0.9992.
